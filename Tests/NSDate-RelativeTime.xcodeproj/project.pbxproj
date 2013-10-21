@@ -190,6 +190,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Bart van Zon";
 				TargetAttributes = {
+					CC984E901813C49200CFBF46 = {
+						DevelopmentTeam = MC7LMP298Y;
+					};
 					CC984EAB1813C49200CFBF46 = {
 						TestTargetID = CC984E901813C49200CFBF46;
 					};
@@ -369,10 +372,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSDate-RelativeTime/NSDate-RelativeTime-Prefix.pch";
 				INFOPLIST_FILE = "NSDate-RelativeTime/NSDate-RelativeTime-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -382,10 +388,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSDate-RelativeTime/NSDate-RelativeTime-Prefix.pch";
 				INFOPLIST_FILE = "NSDate-RelativeTime/NSDate-RelativeTime-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
