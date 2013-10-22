@@ -9,8 +9,10 @@
 #import "NSDate+RelativeTime.h"
 
 @implementation NSDate (RelativeTime)
+
 -(NSString *)relativeTime
 {
     return @"some time ago";
 }
+
 @end

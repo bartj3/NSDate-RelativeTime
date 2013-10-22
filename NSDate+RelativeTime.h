@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (RelativeTime)
+
 -(NSString *)relativeTime;
+
 @end
