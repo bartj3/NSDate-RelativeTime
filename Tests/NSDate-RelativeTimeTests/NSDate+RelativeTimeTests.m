@@ -22,14 +22,27 @@ describe(@"The NSDate class", ^{
         it(@"should parse 2 seconds from now as now", ^{
             NSDate *date = [[NSDate date] dateByAddingTimeInterval:2];
             
-            [[[date relativeTime] should] equal:@"now"];
+            [[[date relativeTime] should] equal:@"Now"];
         });
         
         it(@"should parse 2 seconds ago as now", ^{
             NSDate *date = [[NSDate date] dateByAddingTimeInterval:-2];
             
-            [[[date relativeTime] should] equal:@"now"];
+            [[[date relativeTime] should] equal:@"Now"];
         });
+        
+        it(@"should parse 20 seconds from now as 20 seconds from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:20];
+            
+            [[[date relativeTime] should] equal:@"20 seconds from now"];
+        });
+        
+        it(@"should parse 20 seconds ago as 20 seconds ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-20];
+            
+            [[[date relativeTime] should] equal:@"20 seconds ago"];
+        });
+        
     });
 });
 

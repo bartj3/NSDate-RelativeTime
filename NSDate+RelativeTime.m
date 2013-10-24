@@ -20,9 +20,17 @@ const uint YEAR = DAY*365;
 -(NSString *)relativeTime
 {
     NSDate *now = [NSDate date];
-    double deltaSeconds = fabs([self timeIntervalSinceDate:now]);
+    BOOL future = ([self timeIntervalSinceDate:now] > 0);
+    int deltaSeconds = fabs(lroundf([self timeIntervalSinceDate:now]));
     
-    return @"now";
+    if(deltaSeconds < 5) {
+        return @"Now";
+    } else if(deltaSeconds < MINUTE)
+    {
+        return future ? [NSString stringWithFormat: @"%d seconds from now", deltaSeconds] : [NSString stringWithFormat: @"%d seconds ago", deltaSeconds];
+    } else {
+        return @"now";
+    }
 }
 
 @end
