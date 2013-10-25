@@ -35,6 +35,10 @@ const uint YEAR = DAY*365;
         return future ? @"An hour from now" : @"An hour ago";
     } else if(deltaSeconds < DAY) {
         return future ? [NSString stringWithFormat: @"%ld hours from now", lroundf((float)deltaSeconds/(float)HOUR)] : [NSString stringWithFormat: @"%ld hours ago", lroundf((float)deltaSeconds/(float)HOUR)];
+    } else if(deltaSeconds < 1.5*DAY) {
+        return future ? @"A day from now" : @"A day ago";
+    } else if(deltaSeconds < WEEK) {
+        return future ? [NSString stringWithFormat: @"%ld days from now", lroundf((float)deltaSeconds/(float)DAY)] : [NSString stringWithFormat: @"%ld days ago", lroundf((float)deltaSeconds/(float)DAY)];
     } else {
         return @"now";
     }

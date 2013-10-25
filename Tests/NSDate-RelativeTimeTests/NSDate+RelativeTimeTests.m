@@ -8,7 +8,7 @@ const int MINUTE = 60*SECOND;
 const int HOUR = 60*MINUTE;
 const int DAY = HOUR*24;
 const int WEEK = DAY*7;
-const int MONTH = DAY*30;
+const int MONTH = WEEK*4;
 const int YEAR = DAY*365;
 
 describe(@"The NSDate class", ^{
@@ -114,6 +114,30 @@ describe(@"The NSDate class", ^{
             NSDate *date = [[NSDate date] dateByAddingTimeInterval:-20*HOUR];
             
             [[[date relativeTime] should] equal:@"20 hours ago"];
+        });
+        
+        it(@"should parse 1 day from now as A day from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:1*DAY];
+            
+            [[[date relativeTime] should] equal:@"A day from now"];
+        });
+        
+        it(@"should parse 1 day ago as A day ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-1*DAY];
+            
+            [[[date relativeTime] should] equal:@"A day ago"];
+        });
+        
+        it(@"should parse 6 days from now as 6 days from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:6*DAY];
+            
+            [[[date relativeTime] should] equal:@"6 days from now"];
+        });
+        
+        it(@"should parse 6 days ago as 6 days ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-6*DAY];
+            
+            [[[date relativeTime] should] equal:@"6 days ago"];
         });
     });
 });
