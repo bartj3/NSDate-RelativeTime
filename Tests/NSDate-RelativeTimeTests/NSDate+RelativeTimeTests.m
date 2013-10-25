@@ -102,6 +102,18 @@ describe(@"The NSDate class", ^{
             
             [[[date relativeTime] should] equal:@"An hour ago"];
         });
+        
+        it(@"should parse 20 hours from now as 20 hours from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:20*HOUR];
+            
+            [[[date relativeTime] should] equal:@"20 hours from now"];
+        });
+        
+        it(@"should parse 20 hours ago as 20 hours ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-20*HOUR];
+            
+            [[[date relativeTime] should] equal:@"20 hours ago"];
+        });
     });
 });
 
