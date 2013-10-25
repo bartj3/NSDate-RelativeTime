@@ -25,9 +25,14 @@ const uint YEAR = DAY*365;
     
     if(deltaSeconds < 5) {
         return @"Now";
-    } else if(deltaSeconds < MINUTE)
-    {
+    } else if(deltaSeconds < MINUTE) {
         return future ? [NSString stringWithFormat: @"%d seconds from now", deltaSeconds] : [NSString stringWithFormat: @"%d seconds ago", deltaSeconds];
+    } else if(deltaSeconds < 2*MINUTE) {
+        return future ? @"A minute from now" : @"A minute ago";
+    } else if(deltaSeconds < HOUR) {
+        return future ? [NSString stringWithFormat: @"%d minutes from now", deltaSeconds/MINUTE] : [NSString stringWithFormat: @"%d minutes ago", deltaSeconds/MINUTE];
+    } else if(deltaSeconds < 2*HOUR) {
+        return future ? @"An hour from now" : @"An hour ago";
     } else {
         return @"now";
     }

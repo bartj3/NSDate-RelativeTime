@@ -3,12 +3,12 @@
 
 SPEC_BEGIN(RelativeTimeSpec)
 
-const uint MINUTE = 60;
-const uint HOUR = 60*MINUTE;
-const uint DAY = HOUR*24;
-const uint WEEK = DAY*7;
-const uint MONTH = DAY*30;
-const uint YEAR = DAY*365;
+const int MINUTE = 60;
+const int HOUR = 60*MINUTE;
+const int DAY = HOUR*24;
+const int WEEK = DAY*7;
+const int MONTH = DAY*30;
+const int YEAR = DAY*365;
 
 describe(@"The NSDate class", ^{
     
@@ -55,13 +55,13 @@ describe(@"The NSDate class", ^{
             [[[date relativeTime] should] equal:@"A minute ago"];
         });
         
-        it(@"should parse 12 minute from now as 12 minutes from now", ^{
+        it(@"should parse 12 minutes from now as 12 minutes from now", ^{
             NSDate *date = [[NSDate date] dateByAddingTimeInterval:12*MINUTE];
             
             [[[date relativeTime] should] equal:@"12 minutes from now"];
         });
         
-        it(@"should parse 12 minute ago as A minute ago", ^{
+        it(@"should parse 12 minutes ago as A minute ago", ^{
             NSDate *date = [[NSDate date] dateByAddingTimeInterval:-12*MINUTE];
             
             [[[date relativeTime] should] equal:@"12 minutes ago"];
