@@ -31,16 +31,16 @@ describe(@"The NSDate class", ^{
             [[[date relativeTime] should] equal:@"Now"];
         });
         
-        it(@"should parse 20 seconds from now as 20 seconds from now", ^{
-            NSDate *date = [[NSDate date] dateByAddingTimeInterval:20];
+        it(@"should parse 59 seconds from now as 59 seconds from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:59];
             
-            [[[date relativeTime] should] equal:@"20 seconds from now"];
+            [[[date relativeTime] should] equal:@"59 seconds from now"];
         });
         
-        it(@"should parse 20 seconds ago as 20 seconds ago", ^{
-            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-20];
+        it(@"should parse 59 seconds ago as 59 seconds ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-59];
             
-            [[[date relativeTime] should] equal:@"20 seconds ago"];
+            [[[date relativeTime] should] equal:@"59 seconds ago"];
         });
         
         it(@"should parse 1 minute from now as A minute from now", ^{
@@ -55,16 +55,40 @@ describe(@"The NSDate class", ^{
             [[[date relativeTime] should] equal:@"A minute ago"];
         });
         
-        it(@"should parse 12 minutes from now as 12 minutes from now", ^{
-            NSDate *date = [[NSDate date] dateByAddingTimeInterval:12*MINUTE];
+        it(@"should parse 89 seconds from now as A minute from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:89];
             
-            [[[date relativeTime] should] equal:@"12 minutes from now"];
+            [[[date relativeTime] should] equal:@"A minute from now"];
         });
         
-        it(@"should parse 12 minutes ago as A minute ago", ^{
-            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-12*MINUTE];
+        it(@"should parse 89 minute ago as A minute ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-89];
             
-            [[[date relativeTime] should] equal:@"12 minutes ago"];
+            [[[date relativeTime] should] equal:@"A minute ago"];
+        });
+        
+        it(@"should parse 90 seconds from now as 2 minutes from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:90];
+            
+            [[[date relativeTime] should] equal:@"2 minutes from now"];
+        });
+        
+        it(@"should parse 90 minute ago as 2 minutes ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-90];
+            
+            [[[date relativeTime] should] equal:@"2 minutes ago"];
+        });
+        
+        it(@"should parse 59 minutes from now as 59 minutes from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:59*MINUTE];
+            
+            [[[date relativeTime] should] equal:@"59 minutes from now"];
+        });
+        
+        it(@"should parse 59 minutes ago as A minute ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-59*MINUTE];
+            
+            [[[date relativeTime] should] equal:@"59 minutes ago"];
         });
         
         it(@"should parse 1 hour from now as An hour from now", ^{
