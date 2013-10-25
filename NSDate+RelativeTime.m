@@ -10,47 +10,63 @@
 
 @implementation NSDate (RelativeTime)
 
-const uint MINUTE = 60;
-const uint HOUR = 60*MINUTE;
-const uint DAY = HOUR*24;
-const uint WEEK = DAY*7;
-const uint MONTH = WEEK*4;
-const uint YEAR = DAY*365;
+const int SECOND = 1;
+const int MINUTE = 60*SECOND;
+const int HOUR = 60*MINUTE;
+const int DAY = HOUR*24;
+const int WEEK = DAY*7;
+const int MONTH = WEEK*4;
+const int YEAR = DAY*365;
 
 -(NSString *)relativeTime
 {
-    NSDate *now = [NSDate date];
-    BOOL future = ([self timeIntervalSinceDate:now] > 0);
-    int deltaSeconds = fabs(lroundf([self timeIntervalSinceDate:now]));
+    NSDate *currentDate = [NSDate date];
+    int deltaSeconds = fabs(lroundf([self timeIntervalSinceDate:currentDate]));
+    BOOL dateInFuture = ([self timeIntervalSinceDate:currentDate] > 0);
     
-    if(deltaSeconds < 5) {
+    if(deltaSeconds < 2*SECOND) {
         return @"Now";
     } else if(deltaSeconds < MINUTE) {
-        return future ? [NSString stringWithFormat: @"%d seconds from now", deltaSeconds] : [NSString stringWithFormat: @"%d seconds ago", deltaSeconds];
+        return [self formattedStringForCurrentDate:currentDate count:deltaSeconds past:@"%d seconds ago" future:@"%d seconds from now"];
     } else if(deltaSeconds < 1.5*MINUTE) {
-        return future ? @"A minute from now" : @"A minute ago";
+        return !dateInFuture ? @"A minute ago" : @"A minute from now";
     } else if(deltaSeconds < HOUR) {
-        return future ? [NSString stringWithFormat: @"%ld minutes from now", lroundf((float)deltaSeconds/(float)MINUTE)] : [NSString stringWithFormat: @"%ld minutes ago", lroundf((float)deltaSeconds/(float)MINUTE)];
+        int minutes = (int)lroundf((float)deltaSeconds/(float)MINUTE);
+        return [self formattedStringForCurrentDate:currentDate count:minutes past:@"%d minutes ago" future:@"%d minutes from now"];
     } else if(deltaSeconds < 1.5*HOUR) {
-        return future ? @"An hour from now" : @"An hour ago";
+        return !dateInFuture ? @"An hour ago" : @"An hour from now";
     } else if(deltaSeconds < DAY) {
-        return future ? [NSString stringWithFormat: @"%ld hours from now", lroundf((float)deltaSeconds/(float)HOUR)] : [NSString stringWithFormat: @"%ld hours ago", lroundf((float)deltaSeconds/(float)HOUR)];
+        int hours = (int)lroundf((float)deltaSeconds/(float)HOUR);
+        return [self formattedStringForCurrentDate:currentDate count:hours past:@"%d hours ago" future:@"%d hours from now"];
     } else if(deltaSeconds < 1.5*DAY) {
-        return future ? @"A day from now" : @"A day ago";
+        return !dateInFuture ? @"A day ago" : @"A day from now";
     } else if(deltaSeconds < WEEK) {
-        return future ? [NSString stringWithFormat: @"%ld days from now", lroundf((float)deltaSeconds/(float)DAY)] : [NSString stringWithFormat: @"%ld days ago", lroundf((float)deltaSeconds/(float)DAY)];
+        int days = (int)lroundf((float)deltaSeconds/(float)DAY);
+        return [self formattedStringForCurrentDate:currentDate count:days past:@"%d days ago" future:@"%d days from now"];
     } else if(deltaSeconds < 1.5*WEEK) {
-        return future ? @"A week from now" : @"A week ago";
+        return !dateInFuture ? @"A week ago" : @"A week from now";
     } else if(deltaSeconds < MONTH) {
-        return future ? [NSString stringWithFormat: @"%ld weeks from now", lroundf((float)deltaSeconds/(float)WEEK)] : [NSString stringWithFormat: @"%ld weeks ago", lroundf((float)deltaSeconds/(float)WEEK)];
+        int weeks = (int)lroundf((float)deltaSeconds/(float)WEEK);
+        return [self formattedStringForCurrentDate:currentDate count:weeks past:@"%d weeks ago" future:@"%d weeks from now"];
     } else if(deltaSeconds < 1.5*MONTH) {
-        return future ? @"A month from now" : @"A month ago";
+        return !dateInFuture ? @"A month ago" : @"A month from now";
     } else if(deltaSeconds < YEAR) {
-        return future ? [NSString stringWithFormat: @"%ld months from now", lroundf((float)deltaSeconds/(float)MONTH)] : [NSString stringWithFormat: @"%ld months ago", lroundf((float)deltaSeconds/(float)MONTH)];
+        int months = (int)lroundf((float)deltaSeconds/(float)MONTH);
+        return [self formattedStringForCurrentDate:currentDate count:months past:@"%d months ago" future:@"%d months from now"];
     } else if(deltaSeconds < 1.5*YEAR) {
-        return future ? @"A year from now" : @"A year ago";
+        return !dateInFuture ? @"A year ago" : @"A year from now";
     } else {
-        return future ? [NSString stringWithFormat: @"%ld years from now", lroundf((float)deltaSeconds/(float)YEAR)] : [NSString stringWithFormat: @"%ld years ago", lroundf((float)deltaSeconds/(float)YEAR)];
+        int years = (int)lroundf((float)deltaSeconds/(float)YEAR);
+        return [self formattedStringForCurrentDate:currentDate count:years past:@"%d years ago" future:@"%d years from now"];
+    }
+}
+
+-(NSString *)formattedStringForCurrentDate:(NSDate *)currentDate count:(int)count past:(NSString *)past future:(NSString *)future
+{
+    if ([self timeIntervalSinceDate:currentDate] > 0) {
+        return [NSString stringWithFormat: future, count];
+    } else {
+        return [NSString stringWithFormat: past, count];
     }
 }
 
