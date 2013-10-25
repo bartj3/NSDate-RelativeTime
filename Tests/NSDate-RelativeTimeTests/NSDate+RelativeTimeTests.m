@@ -139,6 +139,30 @@ describe(@"The NSDate class", ^{
             
             [[[date relativeTime] should] equal:@"6 days ago"];
         });
+        
+        it(@"should parse 1 week from now as A week from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:1*WEEK];
+            
+            [[[date relativeTime] should] equal:@"A week from now"];
+        });
+        
+        it(@"should parse 1 week ago as A week ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-1*WEEK];
+            
+            [[[date relativeTime] should] equal:@"A week ago"];
+        });
+        
+        it(@"should parse 3 weeks from now as 3 weeks from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:3*WEEK];
+            
+            [[[date relativeTime] should] equal:@"3 weeks from now"];
+        });
+        
+        it(@"should parse 3 weeks ago as 3 weeks ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-3*WEEK];
+            
+            [[[date relativeTime] should] equal:@"3 weeks ago"];
+        });
     });
 });
 
