@@ -163,6 +163,30 @@ describe(@"The NSDate class", ^{
             
             [[[date relativeTime] should] equal:@"3 weeks ago"];
         });
+        
+        it(@"should parse 1 month from now as A month from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:1*MONTH];
+            
+            [[[date relativeTime] should] equal:@"A month from now"];
+        });
+        
+        it(@"should parse 1 month ago as A month ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-1*MONTH];
+            
+            [[[date relativeTime] should] equal:@"A month ago"];
+        });
+        
+        it(@"should parse 11 months from now as 11 months from now", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:11*MONTH];
+            
+            [[[date relativeTime] should] equal:@"11 months from now"];
+        });
+        
+        it(@"should parse 11 months ago as 11 months ago", ^{
+            NSDate *date = [[NSDate date] dateByAddingTimeInterval:-11*MONTH];
+            
+            [[[date relativeTime] should] equal:@"11 months ago"];
+        });
     });
 });
 

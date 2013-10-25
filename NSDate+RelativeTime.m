@@ -14,7 +14,7 @@ const uint MINUTE = 60;
 const uint HOUR = 60*MINUTE;
 const uint DAY = HOUR*24;
 const uint WEEK = DAY*7;
-const uint MONTH = DAY*30;
+const uint MONTH = WEEK*4;
 const uint YEAR = DAY*365;
 
 -(NSString *)relativeTime
@@ -43,6 +43,10 @@ const uint YEAR = DAY*365;
         return future ? @"A week from now" : @"A week ago";
     } else if(deltaSeconds < MONTH) {
         return future ? [NSString stringWithFormat: @"%ld weeks from now", lroundf((float)deltaSeconds/(float)WEEK)] : [NSString stringWithFormat: @"%ld weeks ago", lroundf((float)deltaSeconds/(float)WEEK)];
+    } else if(deltaSeconds < 1.5*MONTH) {
+        return future ? @"A month from now" : @"A month ago";
+    } else if(deltaSeconds < YEAR) {
+        return future ? [NSString stringWithFormat: @"%ld months from now", lroundf((float)deltaSeconds/(float)MONTH)] : [NSString stringWithFormat: @"%ld months ago", lroundf((float)deltaSeconds/(float)MONTH)];
     } else {
         return @"now";
     }
