@@ -1,15 +1,19 @@
 Pod::Spec.new do |s|
-  s.name         = "NSDate-RelativeTime"
+  s.name         = "NSDate+RelativeTime"
   s.version      = "0.2.0"
   s.summary      = "An NSDate category to generate relative time strings from dates"
   s.description  = <<-DESC
-Date-RelativeTime
+NSDate+RelativeTime
 ===================
 
-An `NSDate` category to generate relative time (or fuzzy time) strings from
-dates.
+NSDate+RelativeTime is an `NSDate` category to generate relative time (or fuzzy
+time) strings from dates. NSDate's are parsed to strings like for example
+'Now', 'A day ago' or '3 months from now'. NSDate+RelativeTime seperates
+itself from other alike categories in the fact that it handles not only past
+dates but future dates as well.
 
 ## Usage
+* Import `NSDate+RelativeTime.h` into the class.
 * Call the `relativeTime` method on an NSDate to get the relative time.
 
 ## Tests
