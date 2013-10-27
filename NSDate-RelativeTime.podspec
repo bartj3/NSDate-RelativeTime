@@ -20,5 +20,6 @@ The tests are in `NSDate+RelativeTimeTests.m` and require Kiwi to run.
   s.license      = { type: 'MIT', file: 'LICENSE' }
   s.author       = { "Bart van Zon" => "bartvanzon@gmail.com" }
   s.source       = { git: "https://github.com/bartj3/NSDate-RelativeTime.git", tag: "0.1.0" }
-  s.source_files  =  'NSDate+RelativeTime.h', 'NSDate+RelativeTime.m'
+  s.source_files = 'NSDate+RelativeTime.h', 'NSDate+RelativeTime.m'
+  s.resources    = 'NSDate+RelativeTime.bundle'
 end

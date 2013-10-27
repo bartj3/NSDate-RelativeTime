@@ -212,6 +212,10 @@ describe(@"The NSDate class", ^{
             [[[date relativeTime] should] equal:@"11 years ago"];
         });
         
+        it(@"should translate the relative time", ^{
+            //pending
+        });
+        
     });
     
 });
