@@ -32,5 +32,5 @@ localizations. If you're not sure about a new feature just create an issue and
 lets discuss it!
 
 ## License
-AFNetworking is available under the MIT license. See the LICENSE file for more
+NSDate+RelativeTime is available under the MIT license. See the LICENSE file for more
 info.
