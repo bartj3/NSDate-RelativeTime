@@ -9,7 +9,7 @@ dates but future dates as well.
 
 ## Usage
 * Add the files to your project manually or via
-(Cocoapods)[http://cocoapods.org] (`pod 'NSDate+RelativeTime', '~> 1.0'`)
+[Cocoapods](http://cocoapods.org) (`pod 'NSDate+RelativeTime', '~> 1.0'`)
 * Import `NSDate+RelativeTime.h` into the class.
 * Call the `relativeTime` method on an NSDate to get the relative time.
 
@@ -18,7 +18,7 @@ The tests are in `NSDate+RelativeTimeTests.m` and require Kiwi to run.
 
 There's a couple of things missing in the tests and I'd love a pullrequest if
 you know how to fix one of them: 
-* A (Travis)[https://travis-ci.org] config file for continuous integration.
+* A [Travis](https://travis-ci.org) config file for continuous integration.
 * Proper tests for the localization.
 * A way to run the tests in a cleaner way (not an entire generated project for
 just one file of tests).
