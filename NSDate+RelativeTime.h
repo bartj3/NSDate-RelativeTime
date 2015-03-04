@@ -10,6 +10,19 @@
 
 @interface NSDate (RelativeTime)
 
+typedef NS_OPTIONS(NSUInteger, RTTimeMask)
+{
+    RTTimeMaskNone = 0,
+    RTTimeMaskSeconds = 1 << 1,
+    RTTimeMaskMinutes = 1 << 2,
+    RTTimeMaskHours = 1 << 3,
+    RTTimeMaskDays = 1 << 4,
+    RTTimeMaskWeeks = 1 << 5,
+    RTTimeMaskMonths = 1 << 6
+    
+};
+
 -(NSString *)relativeTime;
+-(NSString *)relativeTimeWithMask:(RTTimeMask)mask;
 
 @end
