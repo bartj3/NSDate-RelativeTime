@@ -21,7 +21,7 @@ const int YEAR = DAY*365;
 -(NSString *)relativeTime
 {
     NSDate *currentDate = [NSDate date];
-    int deltaSeconds = fabs(lroundf([self timeIntervalSinceDate:currentDate]));
+    long deltaSeconds = labs(lroundf([self timeIntervalSinceDate:currentDate]));
     BOOL dateInFuture = ([self timeIntervalSinceDate:currentDate] > 0);
     
     if(deltaSeconds < 2*SECOND) {
@@ -61,7 +61,7 @@ const int YEAR = DAY*365;
     }
 }
 
--(NSString *)formattedStringForCurrentDate:(NSDate *)currentDate count:(int)count past:(NSString *)past future:(NSString *)future
+-(NSString *)formattedStringForCurrentDate:(NSDate *)currentDate count:(long)count past:(NSString *)past future:(NSString *)future
 {
     if ([self timeIntervalSinceDate:currentDate] > 0) {
         return [NSString stringWithFormat: [self NSDateRelativeTimeLocalizedStrings: future], count];
