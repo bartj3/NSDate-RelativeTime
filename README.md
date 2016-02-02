@@ -1,3 +1,5 @@
+# WARNING: This pod is no longer maintained
+
 NSDate+RelativeTime
 ===================
 
